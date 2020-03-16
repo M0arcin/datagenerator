@@ -13,8 +13,8 @@ public class DataController {
 
     @GetMapping("/generate/json")
     public Country getCountries(){
-
-            return new Country(type, 5, null, "Oksywska", "Oksywska, Poland", null, "location", "Poland", "test", 757423, true, "PL", true, null);
+            GeoPosition geoPosition2 = new GeoPosition( 51.0855422,  16.9987442);
+            return new Country(type, 5, null, "Oksywska", "Oksywska, Poland", null, "location", "Poland", geoPosition2 , 757423, true, "PL", true, null);
         }
 
 
