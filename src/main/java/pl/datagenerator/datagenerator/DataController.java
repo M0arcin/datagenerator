@@ -20,6 +20,7 @@ public class DataController {
         List <Country> countryList = new ArrayList<>();
 
         Country[] countryArray = new Country[10]; // not sure if it's the best way to store it
+
         countryArray [0] = new Country(type, 1, null, "Oksywska", "Oksywska, Poland", null, "location", "Poland", new GeoPosition( 51.0855422,  16.9987442) , 757423, true, "PL", false, null);
         countryArray [1] = new Country(type, 2, null, "Hillingdon" , "Hillingdon, London, United Kingdom", "LHR" , "location", "Great Britain", new GeoPosition(51.469603, -0.453566), 757424,true, "GB", true, null);
         countryArray [2] = new Country(type, 3, null, "Richmond" , "Richmond, British Columbia, Canada" , "YVR" , "location", "Canada", new GeoPosition(49.1966913, -123.18151230000001), 757425,false, "CA", true, null);
@@ -31,8 +32,8 @@ public class DataController {
         countryArray [8] = new Country(type, 9, null, "Kempton Park" , "Kempton Park, Ekurhuleni, Gauteng, South Africa", "JNB" , "location", "South Africa", new GeoPosition(-26.133333, 28.25), 757431,false, "ZA", true, null);
         countryArray [9] = new Country(type, 10, null, "Aleja Wiśniowa 23" , "Aleja Wiśniowa 23, Wrocław, Poland", null , "location", "Poland", new GeoPosition(51.085364, 17.014500), 757432,true, "PL", false, null);
 
-        for(int i = size; i>0; i--){
-            //countryList.add(new Country();
+        for(int i = size; i > 0; i--){
+            countryList.add(countryArray[(int)(Math.random()*( 9 + 1 ))]);
         }
             return countryList;
         }
