@@ -32,8 +32,12 @@ public class DataController {
         countryArray [8] = new Country(type, 9, null, "Kempton Park" , "Kempton Park, Ekurhuleni, Gauteng, South Africa", "JNB" , "location", "South Africa", new GeoPosition(-26.133333, 28.25), 757431,false, "ZA", true, null);
         countryArray [9] = new Country(type, 10, null, "Aleja Wiśniowa 23" , "Aleja Wiśniowa 23, Wrocław, Poland", null , "location", "Poland", new GeoPosition(51.085364, 17.014500), 757432,true, "PL", false, null);
 
+        int id = 1;
+
         for(int i = size; i > 0; i--){
-            countryList.add(countryArray[(int)(Math.random()*( 9 + 1 ))]);
+            countryList.add(countryArray[(int)(Math.random()*( 9 + 1 ))]); // adds randomly selected object into the List
+            countryList.get(countryList.size() - 1).set_id(id); // sets _id in the newest object inside countryList and increment it in the next line,
+            id++;
         }
             return countryList;
         }

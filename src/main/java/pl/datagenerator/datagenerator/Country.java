@@ -5,7 +5,7 @@ public class Country {
 
 
     private final String _type;
-    private final int _id;
+    private int _id;
     private final String key;
     private final String name;
     private final String fullName;
@@ -95,5 +95,9 @@ public class Country {
 
     public String getDistance() {
         return distance;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 }
