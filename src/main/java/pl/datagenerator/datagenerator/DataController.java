@@ -6,18 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 @RestController
 public class DataController {
 
     private final String type = "Position";
 
     @GetMapping("/generate/json/{size}")
-    public List<Country> getCountries(@PathVariable int size){
-        List <Country> countryList = new ArrayList<>();
+    public Country[] getCountries(@PathVariable int size){
+        Country[] countryOutputArray = new Country[size];
 
         Country[] countryArray = new Country[10]; // not sure if it's the best way to store it
 
@@ -34,12 +30,13 @@ public class DataController {
 
         int id = 1;
 
-        for(int i = size; i > 0; i--){
-            countryList.add(countryArray[(int)(Math.random()*( 9 + 1 ))]); // adds randomly selected object into the List
-            countryList.get(countryList.size() - 1).set_id(id); // sets _id in the newest object inside countryList and increment it in the next line,
+        for(int i = 0; i < countryOutputArray.length; i++){
+
+            countryOutputArray[i] = countryArray[(int)(Math.random()*( 9 + 1 ))]; // adds randomly selected object into the Array
+            countryOutputArray[i].set_id(id); // sets _id in the newest object inside countryOutputArray and increment it in the next line,
             id++;
         }
-            return countryList;
+            return countryOutputArray;
         }
 
 
