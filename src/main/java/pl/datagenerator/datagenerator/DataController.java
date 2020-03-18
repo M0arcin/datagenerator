@@ -15,7 +15,7 @@ public class DataController {
     public Country[] getCountries(@PathVariable int size){
         Country[] countryOutputArray = new Country[size];
 
-        Country[] countryArray = new Country[10]; // not sure if it's the best way to store it
+        Country[] countryArray = new Country[10]; // not sure if it's the best place to store it
 
         countryArray [0] = new Country(type, 1, null, "Oksywska", "Oksywska, Poland", null, "location", "Poland", new GeoPosition( 51.0855422,  16.9987442) , 757423, true, "PL", false, null);
         countryArray [1] = new Country(type, 2, null, "Hillingdon" , "Hillingdon, London, United Kingdom", "LHR" , "location", "Great Britain", new GeoPosition(51.469603, -0.453566), 757424,true, "GB", true, null);
@@ -26,14 +26,31 @@ public class DataController {
         countryArray [6] = new Country(type, 7, null, "Paris" , "Paris, France", "CDG" , "location", "France", new GeoPosition(49.009722, 2.547778), 757429,true, "FR", true, null);
         countryArray [7] = new Country(type, 8, null, "Niamey" , "Niamey, Niger", "NIM" , "location", "Niger", new GeoPosition(13.481667, 2.170278), 757430,false, "NE", false, null);
         countryArray [8] = new Country(type, 9, null, "Kempton Park" , "Kempton Park, Ekurhuleni, Gauteng, South Africa", "JNB" , "location", "South Africa", new GeoPosition(-26.133333, 28.25), 757431,false, "ZA", true, null);
-        countryArray [9] = new Country(type, 10, null, "Aleja Wiśniowa 23" , "Aleja Wiśniowa 23, Wrocław, Poland", null , "location", "Poland", new GeoPosition(51.085364, 17.014500), 757432,true, "PL", false, null);
+        countryArray [9] = new Country(type, 10, null, "Aleja Wiśniowa" , "Aleja Wiśniowa, Wrocław, Poland", null , "location", "Poland", new GeoPosition(51.085364, 17.014500), 757432,true, "PL", false, null);
 
         int id = 1;
 
         for(int i = 0; i < countryOutputArray.length; i++){
 
-            countryOutputArray[i] = countryArray[(int)(Math.random()*( 9 + 1 ))]; // adds randomly selected object into the Array
-            countryOutputArray[i].set_id(id); // sets _id in the newest object inside countryOutputArray and increment it in the next line,
+            int ranNum = (int)(Math.random()*( 9 + 1 )); // select random integer within a range of countryArray
+            countryOutputArray[i] = new Country (
+                    type,
+                    id,
+                    countryArray[ranNum].getKey(),
+                    countryArray[ranNum].getName(),
+                    countryArray[ranNum].getFullName(),
+                    countryArray[ranNum].getIata_airport_code(),
+                    countryArray[ranNum].getType(),
+                    countryArray[ranNum].getCountry(),
+                    countryArray[ranNum].getGeo_position(),
+                    countryArray[ranNum].getLocation_id(),
+                    countryArray[ranNum].isInEurope(),
+                    countryArray[ranNum].getCountryCode(),
+                    countryArray[ranNum].isCoreCountry(),
+                    countryArray[ranNum].getDistance()
+            ); // creates new instance of a country object using data from randomly selected object inside an array.
+                // It is done this way to allow incrementation of ID. I tried to avoid copy() and serialization. First one acts weird with mutable objects and performance of latter is quite slow.
+
             id++;
         }
             return countryOutputArray;
