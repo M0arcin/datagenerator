@@ -1,5 +1,8 @@
 package pl.datagenerator.datagenerator;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class GeoPosition {
     private double latitude;
     private double longitude;
