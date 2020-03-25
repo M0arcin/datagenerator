@@ -1,18 +1,14 @@
 package pl.datagenerator.datagenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Country {
 
-    @Id
-    private int _id;
-
     @Column
     private String _type;
+    @Id
+    private Integer id;
 
     @Column
     private String key;
@@ -55,9 +51,9 @@ public class Country {
 
     }
 
-    public Country(String _type, int _id, String key, String name, String fullName, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean inEurope, String countryCode, boolean coreCountry, String distance) {
+    public Country(String _type, int id, String key, String name, String fullName, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean inEurope, String countryCode, boolean coreCountry, String distance) {
         this._type = _type;
-        this._id = _id;
+        this.id = id;
         this.key = key;
         this.name = name;
         this.fullName = fullName;
@@ -78,8 +74,8 @@ public class Country {
         return _type;
     }
 
-    public int get_id() {
-        return _id;
+    public int getId() {
+        return id;
     }
 
     public String getKey() {
@@ -134,8 +130,8 @@ public class Country {
         return distance;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void set_type(String _type) {
