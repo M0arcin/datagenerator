@@ -27,7 +27,7 @@ public class DataController {
             int ranNum = (int)(Math.random()*((10-1)+1))+1; // select random integer within a range of IDs inside repository (from 1 to 10)
 
             countryList.add(Optional.of(new Country(
-                            countryRepository.findById(ranNum).get().getType(),
+                            countryRepository.findById(ranNum).get().get_type(),
                             id,
                             countryRepository.findById(ranNum).get().getKey(),
                             countryRepository.findById(ranNum).get().getName(),

@@ -65,8 +65,6 @@ public class Country {
         this.distance = distance;
     }
 
-
-
     public String get_type() {
         return _type;
     }
