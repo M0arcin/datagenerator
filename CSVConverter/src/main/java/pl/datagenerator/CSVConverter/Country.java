@@ -14,7 +14,7 @@ public class Country {
     private String name;
 
 
-    private String fullName;
+    private String fullname;
 
 
     private String iata_airport_code;
@@ -32,36 +32,35 @@ public class Country {
     private int location_id;
 
 
-    private boolean inEurope;
+    private boolean ineurope;
 
 
-    private String countryCode;
+    private String countrycode;
 
 
-    private boolean coreCountry;
+    private boolean corecountry;
 
 
     private String distance;
-
 
     public Country(){
 
     }
 
-    public Country(String _type, int id, String key, String name, String fullName, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean inEurope, String countryCode, boolean coreCountry, String distance) {
+    public Country(String _type, Integer id, String key, String name, String fullname, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean ineurope, String countrycode, boolean corecountry, String distance) {
         this._type = _type;
         this.id = id;
         this.key = key;
         this.name = name;
-        this.fullName = fullName;
+        this.fullname = fullname;
         this.iata_airport_code = iata_airport_code;
         this.type = type;
         this.country = country;
         this.geo_position = geo_position;
         this.location_id = location_id;
-        this.inEurope = inEurope;
-        this.countryCode = countryCode;
-        this.coreCountry = coreCountry;
+        this.ineurope = ineurope;
+        this.countrycode = countrycode;
+        this.corecountry = corecountry;
         this.distance = distance;
     }
 
@@ -69,32 +68,64 @@ public class Country {
         return _type;
     }
 
-    public int getId() {
+    public void set_type(String _type) {
+        this._type = _type;
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getKey() {
         return key;
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getFullName() {
-        return fullName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getIata_airport_code() {
         return iata_airport_code;
     }
 
+    public void setIata_airport_code(String iata_airport_code) {
+        this.iata_airport_code = iata_airport_code;
+    }
+
     public String getType() {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getCountry() {
         return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public GeoPosition getGeo_position() {
@@ -109,68 +140,36 @@ public class Country {
         return location_id;
     }
 
-    public boolean isInEurope() {
-        return inEurope;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public boolean isCoreCountry() {
-        return coreCountry;
-    }
-
-    public String getDistance() {
-        return distance;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void set_type(String _type) {
-        this._type = _type;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setIata_airport_code(String iata_airport_code) {
-        this.iata_airport_code = iata_airport_code;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public void setLocation_id(int location_id) {
         this.location_id = location_id;
     }
 
-    public void setInEurope(boolean inEurope) {
-        this.inEurope = inEurope;
+    public boolean isIneurope() {
+        return ineurope;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setIneurope(boolean ineurope) {
+        this.ineurope = ineurope;
     }
 
-    public void setCoreCountry(boolean coreCountry) {
-        this.coreCountry = coreCountry;
+    public String getCountrycode() {
+        return countrycode;
+    }
+
+    public void setCountrycode(String countrycode) {
+        this.countrycode = countrycode;
+    }
+
+    public boolean isCorecountry() {
+        return corecountry;
+    }
+
+    public void setCorecountry(boolean corecountry) {
+        this.corecountry = corecountry;
+    }
+
+    public String getDistance() {
+        return distance;
     }
 
     public void setDistance(String distance) {
