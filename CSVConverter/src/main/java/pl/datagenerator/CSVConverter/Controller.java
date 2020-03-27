@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Objects;
 
 @RestController
 public class Controller {
@@ -15,7 +16,7 @@ public class Controller {
     @GetMapping(value = "/converter/csv", produces = "text/csv")
     public String convertToCsv(){
         RestTemplate restTemplate = new RestTemplate();
-        Country country[] = restTemplate.getForObject("http://localhost:8080/generate/json/10", Country[].class); // generates array with country objects gotten from first microservice
+        Country[] country = restTemplate.getForObject("http://localhost:8080/generate/json/10", Country[].class); // generates array with country objects gotten from first microservice
         //currently it's generating 10 set of data but that value can be changed
 
         StringBuilder outputCsv = new StringBuilder();
@@ -28,21 +29,21 @@ public class Controller {
         }
 
         outputCsv.deleteCharAt((outputCsv.length())-1); // deletes last comma inside outputCsv
-        outputCsv.append("\n");
+        outputCsv.append("\n"); // jumps to a new row
 
-        for (Country country1 : country)
+        for (Country country1 : Objects.requireNonNull(country)) // iterates through an array of countries and puts values into outputCsv
         {
-            outputCsv.append(country1.get_type());
+            outputCsv.append(country1.get_type()); // _type
             outputCsv.append(CSV_SEPARATOR);
-            outputCsv.append(country1.getId());
+            outputCsv.append(country1.getId()); // id
             outputCsv.append(CSV_SEPARATOR);
-            outputCsv.append(country1.getName());
+            outputCsv.append(country1.getName()); // name
             outputCsv.append(CSV_SEPARATOR);
-            outputCsv.append(country1.getType());
+            outputCsv.append(country1.getType()); // type
             outputCsv.append(CSV_SEPARATOR);
-            outputCsv.append(country1.getGeo_position().getLatitude());
+            outputCsv.append(country1.getGeo_position().getLatitude()); // latitude
             outputCsv.append(CSV_SEPARATOR);
-            outputCsv.append(country1.getGeo_position().getLongitude());
+            outputCsv.append(country1.getGeo_position().getLongitude()); // longitude
             outputCsv.append("\n");
         }
         return outputCsv.toString();
@@ -52,14 +53,14 @@ public class Controller {
     @GetMapping(value = "/converter/csv/{headers}", produces = "text/csv")
     public String convertToCsvVariables(@PathVariable String headers ) {
 
-        String headersArray[] = headers
+        String[] headersArray = headers
                 .replaceAll("\\s+", "")
                 .toLowerCase()
                 .split(","); // Put headers into array, removes spaces from them and convert to lower case
 
 
         RestTemplate restTemplate = new RestTemplate();
-        Country country[] = restTemplate.getForObject("http://localhost:8080/generate/json/10", Country[].class); // generates array with country objects gotten from first microservice
+        Country[] country = restTemplate.getForObject("http://localhost:8080/generate/json/10", Country[].class); // generates array with country objects gotten from first microservice
         //currently it's generating 10 set of data but that value can be changed
 
 
@@ -80,10 +81,10 @@ public class Controller {
         outputCsv.deleteCharAt((outputCsv.length())-1); // deletes last comma inside outputCsv
         outputCsv.append("\n"); // jumps to a new row
 
-        for (Country country1 : country) // iterates through an array of countries and based on attributes provided by user, calls getters and inserts values into CSV
+        for (Country country1 : Objects.requireNonNull(country)) // iterates through an array of countries and based on attributes provided by user, calls getters and inserts values into CSV
         {
             for(String attribute : headersArray) {
-                if(attribute.equals("latitude") || attribute.equals("longitude") || attribute.equals("_type")){
+                if(attribute.equals("latitude") || attribute.equals("longitude") || attribute.equals("_type") || attribute.equals("fullname") || attribute.equals("ineurope") || attribute.equals("countrycode") || attribute.equals("corecountry")){
                     switch(attribute){
                         case "latitude":
                             outputCsv.append(country1.getGeo_position().getLatitude());
@@ -97,6 +98,22 @@ public class Controller {
                             outputCsv.append(country1.get_type());
                             outputCsv.append(CSV_SEPARATOR);
                             break;
+                        case "fullname":
+                            outputCsv.append(country1.getfullName());
+                            outputCsv.append(CSV_SEPARATOR);
+                            break;
+                        case "ineurope":
+                            outputCsv.append(country1.isinEurope());
+                            outputCsv.append(CSV_SEPARATOR);
+                            break;
+                        case "countrycode":
+                            outputCsv.append(country1.getcountryCode());
+                            outputCsv.append(CSV_SEPARATOR);
+                            break;
+                        case "corecountry":
+                            outputCsv.append(country1.iscoreCountry());
+                            outputCsv.append(CSV_SEPARATOR);
+                            break;
                     }
                 } else {
                     try{
@@ -105,7 +122,8 @@ public class Controller {
 
                         outputCsv.append(method.invoke(country1));
                         outputCsv.append(CSV_SEPARATOR);
-                    }catch(Exception ex){
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
                 }
             }

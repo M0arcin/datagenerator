@@ -14,7 +14,7 @@ public class Country {
     private String name;
 
 
-    private String fullname;
+    private String fullName;
 
 
     private String iata_airport_code;
@@ -32,13 +32,13 @@ public class Country {
     private int location_id;
 
 
-    private boolean ineurope;
+    private boolean inEurope;
 
 
-    private String countrycode;
+    private String countryCode;
 
 
-    private boolean corecountry;
+    private boolean coreCountry;
 
 
     private String distance;
@@ -47,20 +47,20 @@ public class Country {
 
     }
 
-    public Country(String _type, Integer id, String key, String name, String fullname, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean ineurope, String countrycode, boolean corecountry, String distance) {
+    public Country(String _type, Integer id, String key, String name, String fullName, String iata_airport_code, String type, String country, GeoPosition geo_position, int location_id, boolean inEurope, String countryCode, boolean coreCountry, String distance) {
         this._type = _type;
         this.id = id;
         this.key = key;
         this.name = name;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.iata_airport_code = iata_airport_code;
         this.type = type;
         this.country = country;
         this.geo_position = geo_position;
         this.location_id = location_id;
-        this.ineurope = ineurope;
-        this.countrycode = countrycode;
-        this.corecountry = corecountry;
+        this.inEurope = inEurope;
+        this.countryCode = countryCode;
+        this.coreCountry = coreCountry;
         this.distance = distance;
     }
 
@@ -96,12 +96,12 @@ public class Country {
         this.name = name;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getIata_airport_code() {
@@ -144,28 +144,28 @@ public class Country {
         this.location_id = location_id;
     }
 
-    public boolean isIneurope() {
-        return ineurope;
+    public boolean isinEurope() {
+        return inEurope;
     }
 
-    public void setIneurope(boolean ineurope) {
-        this.ineurope = ineurope;
+    public void setinEurope(boolean inEurope) {
+        this.inEurope = inEurope;
     }
 
-    public String getCountrycode() {
-        return countrycode;
+    public String getcountryCode() {
+        return countryCode;
     }
 
-    public void setCountrycode(String countrycode) {
-        this.countrycode = countrycode;
+    public void setcountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
-    public boolean isCorecountry() {
-        return corecountry;
+    public boolean iscoreCountry() {
+        return coreCountry;
     }
 
-    public void setCorecountry(boolean corecountry) {
-        this.corecountry = corecountry;
+    public void setcoreCountry(boolean coreCountry) {
+        this.coreCountry = coreCountry;
     }
 
     public String getDistance() {
