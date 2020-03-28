@@ -1,10 +1,10 @@
-package pl.datagenerator.datagenerator;
+package pl.datagenerator.CSVConverter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatageneratorApplicationTests {
+class CsvConverterApplicationTests {
 
 	@Test
 	void contextLoads() {
