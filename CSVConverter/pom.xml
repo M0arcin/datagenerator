@@ -12,7 +12,7 @@
 	<artifactId>CSVConverter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CSVConverter</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Converts data from JSON to CSV</description>
 
 	<properties>
 		<java.version>13</java.version>
